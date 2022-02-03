@@ -1,28 +1,19 @@
-# Tidal Connect Docker image for HifiBerry (and RaspbianOS)
+# Tidal Connect Docker image for DietPi (and RaspbianOS)
 
 ![hifiberry_sources](img/hifiberry_listsources.png?raw=true)
 
 Image based on https://github.com/shawaj/ifi-tidal-release and https://github.com/seniorgod/ifi-tidal-release. 
 Please visit https://www.raspberrypi.org/forums/viewtopic.php?t=297771 for full information on the backround of this project.
 
-# Why this Docker Port
-
-I have been happily using HifiberryOS but being an extremely slim OS (based on Buildroot) has its pitfalls, that there is no easy way of extending its current features. Thankfully the Hifiberry Team have blessed us by providing Docker and Docker-Compose within OS.
-As I didn't want to add yet another system for Tidal integration (e.g. Bluesound, Volumio), i stumbled upon this https://support.hifiberry.com/hc/en-us/community/posts/360013667717-Tidal-Connect-, and i decided to do something about it. 
-
-This port does much more than just providing the docker image with TIDAL Connect and volume control, as for HifiBerry users it will also install additional sources meny as displayed above.
-Volume controls are reflected in the UI.
-
-# Known issues
-
-* Remote volume control (via IOS/Android) is not working on Hifiberry DAC2 Pro. This DAC seems to use hardware mixer for audio and this doesnt seem to be compatible with the speaker_controller app. This issue is under investigation (https://github.com/TonyTromp/tidal-connect-docker/issues/6)
+# Why this fork of Docker Port
+I was looking for a way to use the excellent ifi-tidal-release as a Docker image for DietPi Buster, because ifi-tidal-release depends on a older version of libcurl3. Installing libcurl3 removes the newer version and packages depending on the newer version. This broke some things in DietPi, like the updater.
+Running tidal connect in a docker solves this problem, but the implementation I found was aimed at HifiberryOS, so I decided to fork this repository and strip all code related to HifiberryOS. 
 
 # Installation
 
 1. SSH into your Raspberry and clone/copy this repository onto your system. 
 ```
-# On HifiberryOS
-cd /data && \
+cd /usr/local && \
   git clone https://github.com/TonyTromp/tidal-connect-docker.git && \
   cd tidal-connect-docker
 ```
@@ -30,17 +21,12 @@ cd /data && \
 2. Install and run
 
 ```
-# On HifiBerryOS
 ./install.sh
 ```
-
-
-Other PiOS (e.g. Raspbian), you can find the docker-compose scripts in the Docker folder.
 
 ENJOY ! ;)
 
 This will download the Docker image from github and install and start TIDAL Connect as a service.
-In addition it will also add a new UI Source to HifiBerry called TIDAL Connect which you can use to start/stop the service
 
 ## Usage
 ```
