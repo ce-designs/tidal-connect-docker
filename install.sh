@@ -269,18 +269,6 @@ systemctl enable tidal.service
 
 log INFO "Finished enabling TIDAL Connect Service."
 
-# Add TIDAL Connect Source to Beocreate
-log INFO "Adding TIDAL Connect Source to Beocreate."
-if [ -L "${BEOCREATE_SYMLINK_FOLDER}" ]; then
-  # Already installed... remove symlink and re-install
-  log INFO "TIDAL Connect extension found, removing previous install."
-  rm ${BEOCREATE_SYMLINK_FOLDER}
-fi
-
-log INFO "Adding TIDAL Connect Source to Beocreate UI."
-ln -s ${PWD}/beocreate/beo-extensions/tidal ${BEOCREATE_SYMLINK_FOLDER}
-log INFO "Finished adding TIDAL Connect Source to Beocreate."
-
 log INFO "Installation Completed."
 
 if [ "$(docker ps -q -f name=docker_tidal-connect)" ]; then
@@ -290,8 +278,5 @@ fi
 
 log INFO "Starting TIDAL Connect Service."
 ./start-tidal-service.sh
-
-log INFO "Restarting Beocreate 2 Service."
-./restart_beocreate2
 
 log INFO "Finished, exiting."
