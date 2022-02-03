@@ -2,10 +2,10 @@
 
 ![hifiberry_sources](img/hifiberry_listsources.png?raw=true)
 
-Image based on https://github.com/shawaj/ifi-tidal-release and https://github.com/seniorgod/ifi-tidal-release. 
+Image based on https://github.com/TonyTromp/tidal-connect-docker and https://github.com/shawaj/ifi-tidal-release and https://github.com/seniorgod/ifi-tidal-release. 
 Please visit https://www.raspberrypi.org/forums/viewtopic.php?t=297771 for full information on the backround of this project.
 
-# Why this fork of Docker Port
+# Why this fork of tidal-connect-docker
 I was looking for a way to use the excellent ifi-tidal-release as a Docker image for DietPi Buster, because ifi-tidal-release depends on a older version of libcurl3. Installing libcurl3 removes the newer version and packages depending on the newer version. This broke some things in DietPi, like the updater.
 Running tidal connect in a docker solves this problem, but the implementation I found was aimed at HifiberryOS, so I decided to fork this repository and strip all code related to HifiberryOS. 
 
