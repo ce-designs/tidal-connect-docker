@@ -10,7 +10,6 @@ running_environment()
   echo "Running environment: "
   echo "  FRIENDLY_NAME:            ${FRIENDLY_NAME}"
   echo "  MODEL_NAME:               ${MODEL_NAME}"
-  echo "  BEOCREATE_SYMLINK_FOLDER: ${BEOCREATE_SYMLINK_FOLDER}"
   echo "  DOCKER_DNS:               ${DOCKER_DNS}"
   echo "  DOCKER_IMAGE:             ${DOCKER_IMAGE}"
   echo "  BUILD_OR_PULL:            ${BUILD_OR_PULL}"
@@ -28,7 +27,6 @@ usage()
   echo ""
   echo "  [FRIENDLY_NAME=<FRIENDLY_NAME>] \\"
   echo "  [MODEL_NAME=<MODEL_NAME>] \\"
-  echo "  [BEOCREATE_SYMLINK_FOLDER=<BEOCREATE_SYMLINK_FOLDER>] \\"
   echo "  [DOCKER_DNS=<DOCKER_DNS>] \\"
   echo "  [DOCKER_IMAGE=<DOCKER_IMAGE>] \\"
   echo "  [BUILD_OR_PULL=<build|pull>] \\"
@@ -37,7 +35,6 @@ usage()
   echo "  $0 \\"
   echo "    [-f <FRIENDLY_NAME>] \\"
   echo "    [-m <MODEL_NAME>] \\"
-  echo "    [-b <BEOCREATE_SYMLINK_FOLDER>] \\"
   echo "    [-d <DOCKER_DNS>] \\"
   echo "    [-i <Docker Image>] \\"
   echo "    [-p <build|pull>] \\"
@@ -47,7 +44,6 @@ usage()
   echo "Defaults:"
   echo "  FRIENDLY_NAME:            ${FRIENDLY_NAME_DEFAULT}"
   echo "  MODEL_NAME:               ${MODEL_NAME_DEFAULT}"
-  echo "  BEOCREATE_SYMLINK_FOLDER: ${BEOCREATE_SYMLINK_FOLDER_DEFAULT}"
   echo "  DOCKER_DNS:               ${DOCKER_DNS_DEFAULT}"
   echo "  DOCKER_IMAGE:             ${DOCKER_IMAGE_DEFAULT}"
   echo "  BUILD_OR_PULL:            ${BUILD_OR_PULL_DEFAULT}"
@@ -112,7 +108,6 @@ select_playback_device()
 # define defaults
 FRIENDLY_NAME_DEFAULT=${HOSTNAME}
 MODEL_NAME_DEFAULT=${HOSTNAME}
-BEOCREATE_SYMLINK_FOLDER_DEFAULT="/opt/beocreate/beo-extensions/tidal"
 DOCKER_DNS_DEFAULT="8.8.8.8"
 DOCKER_IMAGE_DEFAULT="edgecrush3r/tidal-connect:latest"
 BUILD_OR_PULL_DEFAULT="pull"
@@ -123,7 +118,6 @@ PLAYBACK_DEVICE="default"
 # override defaults with environment variables, if they have been set
 FRIENDLY_NAME=${FRIENDLY_NAME:-${FRIENDLY_NAME_DEFAULT}}
 MODEL_NAME=${MODEL_NAME:-${MODEL_NAME_DEFAULT}}
-BEOCREATE_SYMLINK_FOLDER=${BEOCREATE_SYMLINK_FOLDER:-${BEOCREATE_SYMLINK_FOLDER_DEFAULT}}
 DOCKER_DNS=${DOCKER_DNS:-${DOCKER_DNS_DEFAULT}}
 DOCKER_IMAGE=${DOCKER_IMAGE:-${DOCKER_IMAGE_DEFAULT}}
 BUILD_OR_PULL=${BUILD_OR_PULL:-${BUILD_OR_PULL_DEFAULT}}
@@ -134,7 +128,7 @@ HELP=${HELP:-0}
 VERBOSE=${VERBOSE:-0}
 
 # override with command line parameters, if defined
-while getopts "hvf:m:b:d:i:p:t:c:" option
+while getopts "hvf:m:d:i:p:t:c:" option
 do
   case ${option} in
     f)
@@ -142,10 +136,7 @@ do
       ;;
     m)
       MODEL_NAME=${OPTARG}
-      ;;
-    b)
-      BEOCREATE_SYMLINK_FOLDER=${OPTARG}
-      ;;
+      ;;    
     d)
       DOCKER_DNS=${OPTARG}
       ;;
