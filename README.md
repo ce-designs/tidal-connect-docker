@@ -6,8 +6,7 @@ Please visit https://www.raspberrypi.org/forums/viewtopic.php?t=297771 for full 
 # Why this fork of tidal-connect-docker?
 I was looking for a way to use the excellent ifi-tidal-release as a Docker image for DietPi Buster, because ifi-tidal-release depends on an older library versions. 
 For example libcurl3. Installing libcurl3 removes the newer version and packages depending on the newer version. This broke some things in DietPi.
-Running tidal connect in a docker solves this problem, but the implementation I found was aimed at HifiberryOS, but I needed a solution that works for me.
-That why I decided to fork this repository and strip off all code related to HifiberryOS and other stuff that I don't need. 
+Running tidal connect in a docker solves this problem. The Docker implementation from TonyTromp was aimed at HifiberryOS, but I needed a solution that works with Dietpi. That why I decided to fork this repository and strip off all code related to HifiberryOS. 
 
 # Installation
 
