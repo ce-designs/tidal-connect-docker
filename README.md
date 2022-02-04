@@ -27,4 +27,4 @@ This will download the Docker image from github and install and start TIDAL Conn
 
 ## Usage & Troubleshooting
 
-Please visit https://github.com/TonyTromp/tidal-connect-docker, but remember that the beocreate option is nog available in this fork.
+Please visit https://github.com/TonyTromp/tidal-connect-docker, but remember that the beocreate option is not available in this fork.
