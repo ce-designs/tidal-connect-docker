@@ -13,7 +13,7 @@ That why I decided to fork this repository and strip off all code related to Hif
 1. SSH into your Raspberry and clone/copy this repository onto your system. 
 ```
 cd /usr/local && \
-  git clone https://github.com/TonyTromp/tidal-connect-docker.git && \
+  git clone https://github.com/ce-designs/tidal-connect-docker.git && \
   cd tidal-connect-docker
 ```
 
